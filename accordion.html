@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>Аккордеон с настолками</title>
+    <meta charset="utf-8">
+    <style>
+        .accordion {
+            background-color: #eee;
+            color: #444;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+            transition: 0.4s;
+        }
+
+        .active, .accordion:hover {
+            background-color: #ccc;
+        }
+
+        .accordion:after {
+            content: '\002B';
+            color: #777;
+            font-weight: bold;
+            float: right;
+            margin-left: 5px;
+        }
+
+        .active:after {
+            content: "\2212";
+        }
+
+        .panel {
+            padding: 0 18px;
+            background-color: white;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+        }
+    </style>
+</head>
+<body>
+<button class="accordion">Шашки</button>
+<div class="panel">
+    <p>Ша́шки — логическая настольная игра для двух игроков, заключающаяся в передвижении определённым образом
+        фишек-шашек по клеткам шашечной доски. Во время партии каждому игроку принадлежат шашки одного цвета: чёрного
+        или белого (иногда других цветов, один из которых, считается тёмным, а другой — светлым). Цель игры — взять все
+        шашки соперника или лишить их возможности хода (запереть). Существует несколько вариантов шашек, отличающихся
+        правилами и размерами игрового поля.</p>
+</div>
+
+<button class="accordion">Шахматы</button>
+<div class="panel">
+    <p>Ша́хматы — настольная логическая игра со специальными фигурами на 64-клеточной доске, сочетающая в себе элементы
+        искусства (в том числе в части шахматной композиции), науки и спорта.</p>
+</div>
+
+<button class="accordion">Нарды</button>
+<div class="panel">
+    <p>На́рды — настольная игра для двух игроков на специальной доске, разделённой на две половины.
+        Цель игры — привести все свои фишки в дом и снять их с доски раньше, чем это сделает второй игрок.
+        Игроки попеременно бросают кости и передвигают шашки в соответствии с выпавшими очками, проходят шашками
+        полный круг по доске, в свой дом (иногда фигурирует уличное название хата) и выбрасывают их за доску.
+        Есть две основные разновидности — длинные и короткие нарды.</p>
+</div>
+
+<script>
+    let acc = document.getElementsByClassName("accordion");
+    let i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            let panel = this.nextElementSibling;
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+        });
+    }
+</script>
+</body>
+</html>
